@@ -8,7 +8,7 @@ export function login(data) {
     const token = await authApi.login(data);
     const { email, name } = decode(token);
     window.localStorage.user_jwt = token;
-    dispatch(userLoggerIn({ email, name }));
+    dispatch(userLoggerIn({ email, name, token }));
   };
 }
 
