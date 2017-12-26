@@ -35,19 +35,12 @@ export default class LogInForm extends React.Component {
       return this.setState({ errors });
     }
 
-    this.props
-      .submit(data)
-      .then(() => {
-        this.setState({
-          data: EMPTY_DATA
-        });
-      })
-      .catch(e => {
-        this.setState({
-          data: EMPTY_DATA,
-          errors: { global: e.message }
-        });
+    this.props.submit(data).catch(e => {
+      this.setState({
+        data: EMPTY_DATA,
+        errors: { global: e.message }
       });
+    });
   };
 
   render() {
