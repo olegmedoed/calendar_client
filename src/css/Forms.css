@@ -1,0 +1,60 @@
+.FormContainer {
+  display: flex;
+  flex-direction: column;
+  word-wrap: break-word;
+  border: 1px solid #eee;
+  margin-bottom: 10px;
+}
+
+.FormHeader {
+  padding: 10px;
+  margin-bottom: 10px;
+  background-color: #eef;
+}
+
+.FormBody {
+  margin-bottom: 10px;
+  padding: 10px;
+}
+
+.FormMsg {
+  padding: 0.25rem;
+  border-radius: 0.2rem;
+  margin-bottom: 5px;
+}
+
+.FormError {
+  border: 1px solid red;
+  color: red;
+  background-color: #fdd;
+}
+
+.FormSuccess {
+  border: 1px solid green;
+  color: green;
+  background-color: #dfd;
+}
+
+.FormElement {
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+.FormElement input {
+  display: inline-block;
+  width: 100%;
+  line-height: 1.5rem;
+  font-size: 1rem;
+  border-radius: .2rem;
+  border: 1px solid #aaf;
+}
+
+.Btn {
+  text-align: center;
+  vertical-align: middle;
+  padding: 0.5rem;
+  font-weight: 500;
+  background-color: #def;
+  border: 1px solid #ddd;
+  border-radius: .2rem;
+}
