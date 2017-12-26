@@ -1,28 +1,21 @@
 import PropTypes from "prop-types";
 import React from "react";
-import isAlphanumeric from "validator/lib/isAlphanumeric";
 
 const EMPTY = {};
 const EMPTY_DATA = {
-  name: "",
   email: "",
   password: ""
 };
 
-export default class SignUpForm extends React.Component {
+export default class LogInForm extends React.Component {
   static propTypes = {
     submit: PropTypes.func.isRequired
   };
 
   state = {
     data: EMPTY_DATA,
-    errors: EMPTY,
-    success: false
+    errors: EMPTY
   };
-
-  componentWillUnmount() {
-    clearTimeout(this.successTimer);
-  }
 
   onChange = e => {
     const { name, value } = e.target;
@@ -46,13 +39,8 @@ export default class SignUpForm extends React.Component {
       .submit(data)
       .then(() => {
         this.setState({
-          data: EMPTY_DATA,
-          success: true
+          data: EMPTY_DATA
         });
-        this.successTimer = setTimeout(
-          () => this.setState({ success: false }),
-          3000
-        );
       })
       .catch(e => {
         this.setState({
@@ -63,27 +51,22 @@ export default class SignUpForm extends React.Component {
   };
 
   render() {
-    const { data, errors, success } = this.state;
+    const { data, errors } = this.state;
     const errorKeys = Object.keys(errors);
 
     return (
       <div className="FormContainer">
-        <div className="FormHeader">SingUp</div>
-        {success && (
-          <div className="FormMsg FormSuccess">
-            User is successfully created
-          </div>
-        )}
+        <div className="FormHeader">Login</div>
         {errorKeys.length > 0 && (
           <div className="FormMsg FormError">
             {errorKeys.map(key => <div key={key}>{errors[key]}</div>)}
           </div>
         )}
-        <form id="signup_form" className="FormBody" onSubmit={this.onSubmit}>
+        <form id="login_form" className="FormBody" onSubmit={this.onSubmit}>
           <div className="FormElement">
-            <label htmlFor="signup_email">Email:</label>
+            <label htmlFor="login_email">Email:</label>
             <input
-              id="signup_email"
+              id="login_email"
               type="email"
               name="email"
               placeholder="example@email.com"
@@ -92,20 +75,9 @@ export default class SignUpForm extends React.Component {
             />
           </div>
           <div className="FormElement">
-            <label htmlFor="signup_name">Name:</label>
+            <label htmlFor="login_password">Password:</label>
             <input
-              id="signup_name"
-              type="text"
-              name="name"
-              placeholder="John Carter"
-              value={data.name}
-              onChange={this.onChange}
-            />
-          </div>
-          <div className="FormElement">
-            <label htmlFor="signup_password">Password:</label>
-            <input
-              id="signup_password"
+              id="login_password"
               type="password"
               name="password"
               value={data.password}
@@ -113,7 +85,7 @@ export default class SignUpForm extends React.Component {
             />
           </div>
           <div className="FormElement">
-            <button className="Btn">Sign Up</button>
+            <button className="Btn">Login</button>
           </div>
         </form>
       </div>
@@ -125,8 +97,6 @@ function validate(data) {
   const errors = {};
 
   if (data.password.length < 8) errors.password = "Password to short";
-  if (!isAlphanumeric(data.name))
-    errors.name = "Name should consist from alpha-numeric symbols";
 
   return errors;
 }
