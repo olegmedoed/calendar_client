@@ -1,0 +1,75 @@
+.UserPage {
+  display: flex;
+  flex-direction: row;
+}
+
+.UserSideBar {
+  padding: 10px;
+  border-right: 1px solid #eee;
+  width: 300px;
+}
+
+.UserInfo {
+  font-size: 1.5rem;
+  padding: 0.25rem;
+  margin-bottom: 10px;
+  background-color: #eef;
+}
+
+.CalendarView {
+  display: flex;
+  flex-direction: row;
+}
+
+.HalfCalendarView {
+  padding: 20px;
+  display: flex;
+  flex-direction: row;
+}
+
+.TimeRange {
+  color: #aaa;
+  display: flex;
+  flex-direction: column;
+}
+
+.HourTime {
+  display: inline-block;
+  height: 60px;
+  font-size: 16px;
+  border-top: 1px solid #aaa;
+}
+
+.HalfHourTime {
+  display: inline-block;
+  height: 60px;
+  font-size: 12px;
+}
+
+.EventList {
+  position: relative;
+  overflow: hidden;
+}
+
+.Event {
+  position: absolute;
+  font-size: 12px;
+  border-left: 1px solid blue;
+  background-color: #ddf;
+  max-width: 200px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.EventContent {
+  margin-top: 0.5em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  height: 1.5rem;
+}
+
+.EventClose {
+  padding: 0 .5em;
+  float: right;
+  color: blue;
+  font: 9;
+}
