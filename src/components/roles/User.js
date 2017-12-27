@@ -25,4 +25,6 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps)(User);
+export default connect(mapStateToProps)(User, undefined, undefined, {
+  pure: false
+});
