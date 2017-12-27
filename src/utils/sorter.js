@@ -11,8 +11,6 @@ export default class EvsPrev {
       e.offset = this.length;
       e.width = 1;
       this.lists.push([e]);
-      console.log("col: ", e);
-      console.log(this);
       return;
     }
 
@@ -27,8 +25,6 @@ export default class EvsPrev {
       e.offset = col;
       e.width = this.length - col;
       this.lists[col].push(e);
-      console.log("end: ", e);
-      console.log(this);
       return;
     }
 
@@ -40,17 +36,12 @@ export default class EvsPrev {
       e.width = end - adjCol;
       this.lists[adjCol].push(e);
       prev.width = adjCol - prev.offset;
-      console.log(col, adjCol, end, "just: ", e);
-      console.log(this);
       return;
     }
 
     e.offset = col;
     e.width = end - col;
     this.lists[col].push(e);
-
-    console.log(col, end, "just: ", e);
-    console.log(this);
   }
 
   peaks() {

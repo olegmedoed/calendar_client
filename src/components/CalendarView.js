@@ -15,17 +15,9 @@ class CalendarView extends React.Component {
 
   render() {
     const { events } = this.props;
-    const evs = [...events].sort((a, b) => a.start - b.start);
-    const mid = evs.findIndex(e => e.start > WORK_DURATION / 2);
 
-    let leftEvs, rightEvs;
-    if (mid === -1) {
-      leftEvs = evs;
-      rightEvs = [];
-    } else {
-      leftEvs = events.slice(0, mid);
-      rightEvs = events.slice(mid, events.length);
-    }
+    const leftEvs = events.filter(e => e.start <= WORK_DURATION / 2);
+    const rightEvs = events.filter(e => e.start > WORK_DURATION / 2);
 
     return (
       <div className="CalendarView">
@@ -40,7 +32,7 @@ class CalendarView extends React.Component {
             ]}
           />
           <EventList
-            time_offset={WORK_DURATION / 2}
+            time_offset={WORK_DURATION / 2 + 30}
             events={rightEvs}
             width={400}
           />

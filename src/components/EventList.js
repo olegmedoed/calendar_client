@@ -6,9 +6,8 @@ import Sorter from "../utils/sorter";
 export default class EventList extends React.Component {
   render() {
     const { events, width, time_offset } = this.props;
-
+    events.sort((a, b) => a.start - b.start);
     const sorter = new Sorter();
-
     events.forEach(e => sorter.addEvent2(e));
 
     let finalList = sorter.elements();
