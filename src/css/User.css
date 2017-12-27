@@ -14,6 +14,8 @@
   padding: 0.25rem;
   margin-bottom: 10px;
   background-color: #eef;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .CalendarView {
