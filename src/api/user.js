@@ -17,6 +17,14 @@ export function loadEvents() {
     .catch(toErrorMessage);
 }
 
+export function removeEvent(title) {
+  return axios
+    .delete("api/user/events", {
+      params: { title }
+    })
+    .catch(toErrorMessage);
+}
+
 function toErrorMessage(e) {
   if (e.response && e.response.data.error) {
     throw new Error(e.response.data.error.message);

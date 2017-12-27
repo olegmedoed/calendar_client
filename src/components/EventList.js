@@ -4,6 +4,11 @@ import React from "react";
 import Sorter from "../utils/sorter";
 
 export default class EventList extends React.Component {
+  clickCross = e => {
+    const value = e.target.nextSibling.textContent;
+    this.props.click_cross(value);
+  };
+
   render() {
     const { events, width, time_offset } = this.props;
     events.sort((a, b) => a.start - b.start);
@@ -26,7 +31,9 @@ export default class EventList extends React.Component {
             left: off
           }}
         >
-          <div className="EventClose">x</div>
+          <div className="EventClose" onClick={this.clickCross}>
+            x
+          </div>
           <div className="EventContent">{ev.title}</div>
         </div>
       );
