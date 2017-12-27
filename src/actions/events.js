@@ -1,6 +1,6 @@
 import * as userApi from "../api/user";
 
-import { EVENT_ADD } from "../constants";
+import { EVENT_ADD, EVENT_SET } from "../constants";
 
 export function addEvent(data) {
   return async dispatch => {
@@ -9,6 +9,16 @@ export function addEvent(data) {
     dispatch({
       type: EVENT_ADD,
       event: { title, start, duration }
+    });
+  };
+}
+
+export function loadEvents() {
+  return async dispatch => {
+    const events = await userApi.loadEvents();
+    dispatch({
+      type: EVENT_SET,
+      events
     });
   };
 }

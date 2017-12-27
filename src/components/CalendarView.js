@@ -6,7 +6,13 @@ import { BEGINNING, HALF_DAY, WORK_DURATION } from "../utils/time";
 import TimeRange from "./TimeRange";
 import EventList from "./EventList";
 
+import { loadEvents } from "../actions/events";
+
 class CalendarView extends React.Component {
+  componentDidMount() {
+    this.props.loadEvents();
+  }
+
   render() {
     const { events } = this.props;
     const evs = [...events].sort((a, b) => a.start - b.start);
@@ -57,4 +63,4 @@ function* getTimeRange(start, end) {
   }
 }
 
-export default connect(mapStateToProps)(CalendarView);
+export default connect(mapStateToProps, { loadEvents })(CalendarView);
