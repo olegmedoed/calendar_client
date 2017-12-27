@@ -1,9 +1,10 @@
-import PropTypes from "prop-types";
 import React from "react";
+import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { Route, Redirect } from "react-router-dom";
 
-function Guest({ isAuthenticated, component: Component, ...rest }) {
+const Guest = props => {
+  const { isAuthenticated, component: Component, ...rest } = props;
   return (
     <Route
       {...rest}
@@ -12,11 +13,11 @@ function Guest({ isAuthenticated, component: Component, ...rest }) {
       }
     />
   );
-}
+};
 
 Guest.propTypes = {
-  isAuthenticated: PropTypes.bool.isRequired,
-  component: PropTypes.func.isRequired
+  component: PropTypes.func.isRequired,
+  isAuthenticated: PropTypes.bool.isRequired
 };
 
 function mapStateToProps(state) {
@@ -25,6 +26,6 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps)(Guest, undefined, undefined, {
-  pure: false
-});
+export default connect(mapStateToProps, undefined, undefined, { pure: false })(
+  Guest
+);

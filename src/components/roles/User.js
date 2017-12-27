@@ -3,20 +3,18 @@ import React from "react";
 import { connect } from "react-redux";
 import { Route, Redirect } from "react-router-dom";
 
-function User({ isAuthenticated, component: Component, ...rest }) {
-  return (
-    <Route
-      {...rest}
-      render={props =>
-        isAuthenticated ? <Component {...props} /> : <Redirect to="/" />
-      }
-    />
-  );
-}
+const User = ({ isAuthenticated, component: Component, ...rest }) => (
+  <Route
+    {...rest}
+    render={props =>
+      isAuthenticated ? <Component {...props} /> : <Redirect to="/" />
+    }
+  />
+);
 
 User.propTypes = {
-  isAuthenticated: PropTypes.bool.isRequired,
-  component: PropTypes.func.isRequired
+  component: PropTypes.func.isRequired,
+  isAuthenticated: PropTypes.bool.isRequired
 };
 
 function mapStateToProps(state) {
@@ -25,6 +23,6 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps)(User, undefined, undefined, {
-  pure: false
-});
+export default connect(mapStateToProps, undefined, undefined, { pure: false })(
+  User
+);
