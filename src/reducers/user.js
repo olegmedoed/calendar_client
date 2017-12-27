@@ -1,9 +1,11 @@
-import { USER_LOGIN } from "../constants";
+import { USER_LOGIN, USER_LOGOUT } from "../constants";
 
 export default function UserReducer(state = {}, action) {
   switch (action.type) {
     case USER_LOGIN:
       return action.user;
+    case USER_LOGOUT:
+      return {};
     default:
       return state;
   }

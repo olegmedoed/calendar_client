@@ -3,6 +3,7 @@ import React from "react";
 
 import AddEvent from "../AddEvent";
 import UserInfo from "../UserInfo";
+import LogOut from "../LogOut";
 
 import CalendarView from "../CalendarView";
 
@@ -14,6 +15,7 @@ export default class UserPage extends React.Component {
         <div className="UserSideBar">
           <UserInfo />
           <AddEvent />
+          <LogOut />
         </div>
         <CalendarView />
       </div>
